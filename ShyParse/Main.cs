@@ -12,7 +12,7 @@ void Footer()
     Console.WriteLine("- - - - - - - - - - - - - - - - - - -");
 }
 
-int ShyParse(string input, bool log)
+double ShyParse(string input, bool log)
 {
     if (log) Console.WriteLine("-                                   -");
     if (log) Console.WriteLine("- ShyParse(" + input + ")\n-");
@@ -46,10 +46,10 @@ int ShyParse(string input, bool log)
     } 
     else
     {
-        if (log) Console.WriteLine("-\n- ShyParse(" + input + ") = " + int.Parse(output));
+        if (log) Console.WriteLine("-\n- ShyParse(" + input + ") = " + double.Parse(output));
         if (log) Console.WriteLine("-                                   -");
 
-        return int.Parse(output);
+        return double.Parse(output);
     }
 }
 
@@ -62,7 +62,7 @@ while (true)
     Console.Write("- rawString: ");
     string rawString = Console.ReadLine();
 
-    int output = ShyParse(rawString, false);
+    double output = ShyParse(rawString, false);
     Console.WriteLine("- output: " + output);
 
     Console.WriteLine("-                                   -");
