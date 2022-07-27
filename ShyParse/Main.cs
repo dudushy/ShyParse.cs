@@ -1,24 +1,80 @@
-﻿//* Header
-Console.WriteLine("\t=-- ShyParse.cs --=");
-Console.WriteLine("- Attempting to recreate TryParse() -");
-Console.WriteLine("-                                   -");
-
-//* CODE [BEGIN]
-int ShyParse(string input)
+﻿void Header()
 {
+    Console.WriteLine("\t=-- ShyParse.cs --=");
+    Console.WriteLine("- - - - - - - - - - - - - - - - - - -");
+    Console.WriteLine("- Attempting to recreate TryParse() -");
     Console.WriteLine("-                                   -");
-
-    Console.WriteLine("- ShyParse(" + input + ")");
-
-    Console.WriteLine("-                                   -");
-    return 0;
 }
 
-Console.Write("- rawString: ");
-string rawString = Console.ReadLine();
+void Footer()
+{
+    Console.WriteLine("-                                   -");
+    Console.WriteLine("- - - - - - - - - - - - - - - - - - -");
+}
 
-ShyParse(rawString);
-//* CODE [END]
+int ShyParse(string input, bool log)
+{
+    if (log) Console.WriteLine("-                                   -");
+    if (log) Console.WriteLine("- ShyParse(" + input + ")\n-");
 
-//* Footer
-Console.WriteLine("- - - - - - - - - - - - - - - - - - -");
+    string numbers = "0123456789";
+    string output = "";
+
+    foreach (char c in input)
+    {
+        if (log) Console.Write("- char: " + c);
+
+        if (numbers.Contains(c))
+        {
+            if (log) Console.WriteLine(" [TRUE]");
+
+            output += c;
+            if (log) Console.WriteLine("- output: " + output + "\n-");
+        } 
+        else
+        {
+            if (log) Console.WriteLine(" [FALSE]\n-");
+        }
+    }
+
+    if (output == "")
+    {
+        if (log) Console.WriteLine("-\n- ShyParse(" + input + ") = 0");
+        if (log) Console.WriteLine("-                                   -");
+
+        return 0;
+    } 
+    else
+    {
+        if (log) Console.WriteLine("-\n- ShyParse(" + input + ") = " + int.Parse(output));
+        if (log) Console.WriteLine("-                                   -");
+
+        return int.Parse(output);
+    }
+}
+
+// Main
+while (true)
+{
+    Console.Clear();
+    Header();
+
+    Console.Write("- rawString: ");
+    string rawString = Console.ReadLine();
+
+    int output = ShyParse(rawString, false);
+    Console.WriteLine("- output: " + output);
+
+    Console.WriteLine("-                                   -");
+
+    Console.Write("- Run again? (y/n): ");
+    if (Console.ReadLine().ToLower() == "y")
+    {
+        continue;
+    }
+    else
+    {
+        Footer();
+        break;
+    }
+}
